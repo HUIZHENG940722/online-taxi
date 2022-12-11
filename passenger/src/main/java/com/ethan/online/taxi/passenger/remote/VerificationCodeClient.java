@@ -1,6 +1,7 @@
 package com.ethan.online.taxi.passenger.remote;
 
 import com.ethan.online.taxi.common.dto.ResponseResult;
+import com.ethan.online.taxi.passenger.request.NumberCodeResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,5 +15,5 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface VerificationCodeClient {
 
     @GetMapping(value = "/numberCode/{size}")
-    ResponseResult numberCode(@PathVariable("size") int size);
+    ResponseResult<NumberCodeResponse> numberCode(@PathVariable("size") int size);
 }
