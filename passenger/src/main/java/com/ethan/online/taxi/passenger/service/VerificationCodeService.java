@@ -1,6 +1,9 @@
 package com.ethan.online.taxi.passenger.service;
 
+import com.ethan.online.taxi.common.dto.ResponseResult;
+import com.ethan.online.taxi.passenger.remote.VerificationCodeClient;
 import net.sf.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,14 +14,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class VerificationCodeService {
 
-    public String generatorCode(String passengerPhone) {
+    @Autowired
+    private VerificationCodeClient verificationCodeClient;
+
+    public ResponseResult generatorCode(String passengerPhone) {
         // 调用验证码服务，获取验证码
-        System.out.println("调用验证码服务，获取验证码");
-        String code = "111111";
+        ResponseResult responseResult = verificationCodeClient.numberCode(6);
         // 存入redis
-        JSONObject result = new JSONObject();
-        result.put("code", 1);
-        result.put("message", "success");
-        return result.toString();
+        return responseResult;
     }
 }

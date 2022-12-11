@@ -1,5 +1,6 @@
 package com.ethan.online.taxi.passenger.controller;
 
+import com.ethan.online.taxi.common.dto.ResponseResult;
 import com.ethan.online.taxi.passenger.request.VerificationCodeDTO;
 import com.ethan.online.taxi.passenger.service.VerificationCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class VerificationCodeController {
      * @return
      */
     @GetMapping(value = "/verification-code")
-    public String verificationCode(@RequestBody VerificationCodeDTO verificationCodeDTO) {
+    public ResponseResult verificationCode(@RequestBody VerificationCodeDTO verificationCodeDTO) {
 
         String passengerPhone = verificationCodeDTO.getPassengerPhone();
         System.out.println("接受到的手机号参数：" + passengerPhone);
