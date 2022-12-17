@@ -11,5 +11,5 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class NumberCodeResponse {
-    private String data;
+    private String numberCode;
 }

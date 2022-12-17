@@ -5,6 +5,7 @@ import com.ethan.online.taxi.passenger.request.VerificationCodeDTO;
 import com.ethan.online.taxi.passenger.service.VerificationCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,5 +32,16 @@ public class VerificationCodeController {
         String passengerPhone = verificationCodeDTO.getPassengerPhone();
         System.out.println("接受到的手机号参数：" + passengerPhone);
         return verificationCodeService.generatorCode(passengerPhone);
+    }
+
+    /**
+     * 校验验证码
+     *
+     * @param verificationCodeDTO
+     * @return
+     */
+    @PostMapping(value = "/verification-code-check")
+    public ResponseResult checkVerificationCode(@RequestBody VerificationCodeDTO verificationCodeDTO) {
+        return verificationCodeService.checkCode(verificationCodeDTO.getPassengerPhone(), verificationCodeDTO.getVerificationCode());
     }
 }
